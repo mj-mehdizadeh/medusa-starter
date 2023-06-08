@@ -1,0 +1,148 @@
+{
+  "themes": {
+    "title": "قالب پیشفرض",
+    "scheme": {
+      "Hero": {
+        "_": "Hero",
+        "name": "بلاک محتوا",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "عنوان"
+          },
+          {
+            "id": "description",
+            "type": "richtext",
+            "label": "توضیحات"
+          },
+          {
+            "id": "buttonText",
+            "type": "text",
+            "label": "عنوان گزینه"
+          },
+          {
+            "id": "buttonLink",
+            "type": "url",
+            "label": "آدرس ارجاع"
+          },
+          {
+            "id": "imgUrl",
+            "type": "image_picker",
+            "label": "پس زمینه"
+          }
+        ]
+      },
+      "FeaturedProducts": {
+        "_": "Hero",
+        "name": "سطر محصولات",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "عنوان"
+          },
+          {
+            "id": "description",
+            "type": "richtext",
+            "label": "توضیحات"
+          },
+          {
+            "id": "buttonText",
+            "type": "text",
+            "label": "عنوان گزینه"
+          },
+          {
+            "id": "buttonLink",
+            "type": "url",
+            "label": "آدرس ارجاع"
+          }
+        ]
+      },
+      "Banner": {
+        "_": "Banner",
+        "name": "بلاک اطلاعیه",
+        "settings": [
+          {
+            "id": "headline",
+            "type": "text",
+            "label": "عنوان"
+          },
+          {
+            "id": "description",
+            "type": "richtext",
+            "label": "توضیحات"
+          },
+          {
+            "id": "buttonText",
+            "type": "text",
+            "label": "عنوان گزینه"
+          },
+          {
+            "id": "buttonLink",
+            "type": "url",
+            "label": "آدرس ارجاع"
+          }
+        ]
+      }
+    },
+    "templates": {
+      "index": {
+        "order": [
+          "hero",
+          "featured-products"
+        ],
+        "sections": {
+          "hero": {
+            "_": "Hero",
+            "settings": {
+              "title": "Summer styles are finally here",
+              "description": "This year, our new summer collection will shelter you from the harsh\n          elements of a world that doesn&apos;t care if you live or die.",
+              "buttonText": "Explore products",
+              "buttonLink": "/store",
+              "imgUrl": "/hero.jpg"
+            }
+          },
+          "featured-products": {
+            "_": "FeaturedProducts",
+            "settings": {
+              "title": "Summer styles are finally here",
+              "description": "This year, our new summer collection will shelter you from the harsh",
+              "filter": "",
+              "buttonText": "Explore products",
+              "buttonLink": "/store"
+            }
+          }
+        }
+      },
+      "_header": {
+        "order": [
+          "banner-x23565",
+          "main"
+        ],
+        "sections": {
+          "main": {
+            "settings": {
+              "title": "Site Name"
+            }
+          },
+          "banner-x23565": {
+            "_": "Banner",
+            "settings": {
+              "headline": "GeneriCon 2023",
+              "description": "Join us in Denver from June 7 – 9 to see what’s coming next.",
+              "buttonText": "ثبت نام کنید",
+              "buttonLink": "/test/store"
+            }
+          }
+        }
+      },
+      "_footer": {
+        "order": [
+        ],
+        "sections": {
+        }
+      }
+    }
+  }
+}

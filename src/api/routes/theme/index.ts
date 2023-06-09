@@ -17,10 +17,10 @@ export function getThemeRouter(app: Router): Router {
   app.use("/admin/theme", route)
 
   route.get("/", middlewares.wrap(getActiveThemeHandler))
-  route.post("/:id/active", middlewares.wrap(ActiveThemeHandler))
   route.post("/", middlewares.wrap(createThemeHandler))
   route.get("/:id", middlewares.wrap(getThemeHandler))
-  route.put("/:id", middlewares.wrap(updateThemeHandler))
+  route.post("/:id", middlewares.wrap(updateThemeHandler))
+  route.post("/:id/active", middlewares.wrap(ActiveThemeHandler))
 
   return app
 }

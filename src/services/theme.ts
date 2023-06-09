@@ -30,9 +30,13 @@ export default class ThemeService extends TransactionBaseService {
     async create(
         theme: AdminCreateThemeReq
     ): Promise<Theme> {
-        let themeData = this.themeRepository_.create(theme)
-        themeData = await this.themeRepository_.save(themeData);
-        return themeData
+        return await this.atomicPhase_(async (manager) => {
+            const cgRepo: typeof ThemeRepository = manager.withRepository(
+                this.themeRepository_
+            )
+            const created = cgRepo.create(theme)
+            return await cgRepo.save(created)
+        })
     }
 
 }

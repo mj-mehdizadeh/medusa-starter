@@ -14,6 +14,9 @@ export class Theme extends BaseEntity {
     @Column({ type: "json" })
     templates: Templates
 
+    @Column({ type: "boolean", default: false })
+    active: boolean
+
     @BeforeInsert()
     private beforeInsert(): void {
         this.id = generateEntityId(this.id, "theme")

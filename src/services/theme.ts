@@ -39,15 +39,33 @@ export default class ThemeService extends TransactionBaseService {
 
         const query = buildQuery({id: themeId}, config)
 
-        const customerGroup = await cgRepo.findOne(query)
-        if (!customerGroup) {
+        const theme = await cgRepo.findOne(query)
+        if (!theme) {
             throw new MedusaError(
                 MedusaError.Types.NOT_FOUND,
                 `CustomerGroup with id ${themeId} was not found`
             )
         }
 
-        return customerGroup
+        return theme
+    }
+
+    async retrieveActive(config = {}): Promise<Theme> {
+        const cgRepo = this.activeManager_.withRepository(
+            this.themeRepository_
+        )
+
+        const query = buildQuery({active: true}, config)
+
+        const theme = await cgRepo.findOne(query)
+        if (!theme) {
+            throw new MedusaError(
+                MedusaError.Types.NOT_FOUND,
+                `Active Theme with was not found`
+            )
+        }
+
+        return theme
     }
 
     /**
@@ -91,4 +109,23 @@ export default class ThemeService extends TransactionBaseService {
             return await cgRepo.save(theme)
         })
     }
+
+    /**
+     * Update a active theme.
+     *
+     * @param themeId - id of the customer group
+     * @returns resulting customer group
+     */
+    async updateActiveTheme(
+        themeId: string,
+    ) {
+        return await this.atomicPhase_(async (manager) => {
+            const cgRepo: typeof ThemeRepository = manager.withRepository(
+                this.themeRepository_
+            )
+            await cgRepo.update({active: true}, {active: false});
+            return await cgRepo.update({id: themeId}, {active: true});
+        })
+    }
+
 }

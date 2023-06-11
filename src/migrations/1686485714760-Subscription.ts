@@ -30,7 +30,6 @@ export class Subscription1686485714760 implements MigrationInterface {
 
         await queryRunner.query(`ALTER TABLE "subscription" DROP CONSTRAINT "subscription_customer_id_fkey"`)
         await queryRunner.query(`ALTER TABLE "subscription" DROP CONSTRAINT "subscription_variant_id_fkey"`)
-        await queryRunner.query(`DROP INDEX "subscription_pkey"`)
         await queryRunner.query(`DROP TABLE "subscription"`)
     }
 }

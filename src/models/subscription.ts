@@ -2,21 +2,21 @@ import {BeforeInsert, Column, Entity, Generated, Index, JoinColumn, ManyToOne, O
 import {BaseEntity, Customer, generateEntityId, ProductVariant} from "@medusajs/medusa"
 import {SubscriptionStatus} from "../types/subscription";
 import {Order} from "./order";
+import {Vendor} from "./vendor";
 
 @Entity()
 export class Subscription extends BaseEntity {
 
     @Index()
     @Column()
-    customer_id: string
+    vendor_id: string
 
-    @ManyToOne(() => Customer)
-    @JoinColumn({ name: "customer_id" })
-    customer: Customer
+    @ManyToOne(() => Vendor)
+    @JoinColumn({ name: "vendor_id" })
+    vendor: Vendor
 
-    @Index()
     @Column({ type: "text" })
-    variant_id: string | null
+    variant_id: string
 
     @ManyToOne(() => ProductVariant)
     @JoinColumn({ name: "variant_id" })

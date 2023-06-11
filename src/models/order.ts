@@ -8,8 +8,8 @@ import {Subscription} from "./subscription";
 @Entity()
 export class Order extends MedusaOrder {
     @Index()
-    @Column({ type: "text" })
-    subscription_id: string
+    @Column({ type: "text", nullable: true })
+    subscription_id: string | null
 
     @ManyToOne(() => Subscription)
     @JoinColumn({ name: "subscription_id" })
